@@ -10,7 +10,7 @@ raco pkg install --link pda
 Now just (require pda) at the top of the file and you're good to go!
 
 ## Usage
-The four functions available to you from this moduel are
+The four functions available to you from this module are
 - define-pda
 - pda
 - push-down
