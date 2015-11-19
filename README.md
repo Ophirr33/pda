@@ -7,6 +7,7 @@ In DrRacket, go to Install Package and paste in "https://github.com/Ophirr33/pda
 Or
 
 git clone https://github.com/Ophirr33/pda.git
+
 raco pkg install --link pda
 
 Now just (require pda) at the top of the file and you're good to go!
