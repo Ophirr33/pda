@@ -3,7 +3,9 @@ Push Down Automaton implementation in Racket
 
 ## Setup
 In DrRacket, go to Install Package and paste in "https://github.com/Ophirr33/pda.git"
+
 Or
+
 git clone https://github.com/Ophirr33/pda.git
 raco pkg install --link pda
 
