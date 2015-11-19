@@ -1,5 +1,5 @@
 # pda
-Push Down Automaton implementation in Racket
+Functional Push Down Automaton implementation in Racket
 
 ## Setup
 In DrRacket, go to Install Package and paste in "https://github.com/Ophirr33/pda.git"
