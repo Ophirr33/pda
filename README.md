@@ -39,3 +39,7 @@ For example, the following code defines a PDA that accepts the reverse of string
   (push-down pda-1 '(a b b a))  ;; --> #t
   (push-down pda-1 "baab"))     ;; --> #t
 ```
+
+### Ideas for improvement
+- Spot any infinitely looping setups and just return #f instead
+- Allow for multi-stack transitions (basically allow for kleene star transition functions in case of new-stack?)
