@@ -39,6 +39,17 @@ For example, the following code defines a PDA that accepts the reverse of string
   (push-down pda-1 '(a b b a))  ;; --> #t
   (push-down pda-1 "baab"))     ;; --> #t
 ```
+and the following accepts the kleene-star + 1 of "ab"
+```
+(push-down (pda 's
+  '((s ɛ ɛ f S)
+    (f ɛ S c S)
+    (c ɛ ɛ f S)
+    (f ɛ S d b)
+    (d ɛ ɛ f a)
+    (f a a f ɛ)
+    (f b b f ɛ)) '(f)))         ;; --> #t
+```
 
 ### Ideas for improvement
 - Spot any infinitely looping setups and just return #f instead
