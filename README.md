@@ -10,7 +10,7 @@ git clone https://github.com/Ophirr33/pda.git
 
 raco pkg install --link pda
 
-Now just (require pda) at the top of the file and you're good to go!
+Now just `(require pda)` at the top of the file and you're good to go!
 
 ## Usage
 The four functions available to you from this module are
