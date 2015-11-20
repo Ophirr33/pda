@@ -49,7 +49,7 @@ and the following accepts the kleene-star + 1 of "ab"
     (d ɛ ɛ f a)
     (f a a f ɛ)
     (f b b f ɛ)) '(f))
-    "ababab")         ;; --> #t
+    '(a b a b a b))         ;; --> #t
 ```
 
 ### Ideas for improvement
