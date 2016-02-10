@@ -13,17 +13,16 @@ raco pkg install --link pda
 Now just `(require pda)` at the top of the file and you're good to go!
 
 ## Usage
-The three functions available to you from this module are
+The two functions available to you from this module are
 - define-pda
 - pda
-- push-down
 
 And the two special symbols are
 - The wild card: __
-- Epsilon      : ɛ
+- epsilon      : ɛ   (defined as epsilon so you can just use that instead of 'ɛ)
 
 This module allows you to create pdas from their start state, list of transitions, and list of final states.
-Then, one can run the defined PDA on different inputs using push-down. Input can be specified as a string,
+Then, one can apply the defined PDA on different inputs. Input can be specified as a string,
 which is converted to a list of single character symbols, or as a list of symbols. Epsilon is simply a 
 shortcut to write 'ɛ, the special symbol that specifies an empty input or stack transition. The wild card __
 is a symbol that will match with any given symbol. Note that it is two dashes, not one. pda is a function
@@ -40,12 +39,12 @@ For example, the following code defines a PDA that accepts the reverse of string
       (f b b f ɛ))
     '(f))
   
-  (push-down pda-1 '(a b b a))      ;; --> #t
-  (push-down pda-1 "baab"))         ;; --> #t
+  (pda-1 '(a b b a))      ;; --> #t
+  (pda-1 "baab"))         ;; --> #t
 ```
 and the following accepts the kleene-star + 1 of "ab"
 ```
-(push-down (pda 's
+((pda 's
     '((s ɛ ɛ f S)
       (f ɛ S c S)
       (c ɛ ɛ f S)
@@ -61,9 +60,9 @@ and finally, the following accepts any singular character
     '((start __ ɛ end count)
       (end ɛ c end ɛ))
     '(end))
-  (push-down wild-card '())         ;; --> #f
-  (push-down wild-card '(apple))    ;; --> #t
-  (push-down wild-card '(too many)) ;; --> #f
+  (wild-card '())         ;; --> #f
+  (wild-card '(apple))    ;; --> #t
+  (wild-card '(too many)) ;; --> #f
 ```
 
 
