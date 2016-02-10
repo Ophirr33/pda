@@ -1,5 +1,5 @@
 #lang racket
-(provide define-pda push-down pda epsilon)
+(provide define-pda pda epsilon)
 (require (for-syntax syntax/parse))
 
 ;; Macro for defining pda's to a name
