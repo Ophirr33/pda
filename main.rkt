@@ -27,11 +27,13 @@
     
   (syntax-parse stx
     [(_ name:id start:start transitions:trans finals:fin)
-     #'(define name (list start (map (λ (x) (apply generate-trans x)) transitions)
-                          finals))]))
+     #'(define name (λ (input)
+                      (push-down (list start (map (λ (x) (apply generate-trans x)) transitions)
+                                       finals)
+                                 input)))]))
 
 ;; Returns a pda given its start state, transitions, and final states
-;; Symbol [List-of [List-of Symbol]] [List-of Symbol] -> Pda
+;; Symbol [List-of [List-of Symbol]] [List-of Symbol] -> ([List-of Symbol] -> Boolean)
 (define (pda start transitions finals)
   (cond [(not (symbol? start))
          (raise-argument-error 'pda "symbol?" 0 start)]
@@ -42,7 +44,10 @@
         [(not (and (list? finals) (andmap symbol? finals)))
          (raise-argument-error 'pda "list of symbols?" 2 finals)]
         [else 
-         (list start (map (λ (x) (apply generate-trans x)) transitions) finals)]))
+         (λ (input) (push-down
+                     (list start (map (λ (x) (apply generate-trans x))
+                                      transitions) finals)
+                     input))]))
 
 ;; Run the pda on the given input. Input can be formatted as a string or [List-of Symbol]
 (define (push-down pda-des input)
