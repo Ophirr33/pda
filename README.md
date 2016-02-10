@@ -60,7 +60,7 @@ and finally, the following accepts any singular character
 (define-pda wild-card 'start
     '((start __ ɛ end count)
       (end ɛ c end ɛ))
-    '(f))
+    '(end))
   (push-down wild-card '())         ;; --> #f
   (push-down wild-card '(apple))    ;; --> #t
   (push-down wild-card '(too many)) ;; --> #f
