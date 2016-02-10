@@ -75,8 +75,7 @@
           [pda-stack (pda-c-stack config)])
       (cond [(or (not (symbol=? pda-state initial-state))
                  (not (or (ee? input-read) (and (not (empty? pda-input))
-                                                (or (symbol=? input-read '__)
-                                                    (symbol=? input-read (car pda-input))))))
+                                                (symbol=? input-read (car pda-input)))))
                  (and (not (ee? stack-top)) (
                                              empty? pda-stack))
                  (not (or (ee? stack-top) (ee? new-stack)
